@@ -105,7 +105,8 @@ public class AddNoteActivity extends BaseActivity implements View.OnClickListene
      * @param status status of note
      */
     private void submitForm(String header, String title, String status) {
-        if (!checkHeader(editHeader, inputHeader) | !checkTitle(editTitle, inputTitle)) {
+        if (!checkValues(editHeader, inputHeader, getString(R.string.msg_error_input_header_note)) |
+                !checkValues(editTitle, inputTitle, getString(R.string.msg_error_input_title_note))) {
             return;
         } else {
             if (status.equalsIgnoreCase(Constraint.STATUS_SECRET_FALSE)) {
@@ -131,40 +132,13 @@ public class AddNoteActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-
-    /**
-     * Check not null of edit text header
-     *
-     * @param edittext     edit text your enter header
-     * @param input_layout input layout of inputlayout
-     * @return
-     */
-    private boolean checkTitle(EditText edittext, TextInputLayout input_layout) {
-        if (edittext.getText().toString().trim().isEmpty()) {
-            input_layout.setError(getString(R.string.input_layout_error_header));
-            requestFocus(edittext);
+    private boolean checkValues(EditText editText, TextInputLayout textInputLayout, String messageError) {
+        if (editText.getText().toString().trim().isEmpty()) {
+            textInputLayout.setError(messageError);
+            requestFocus(editText);
             return false;
         } else {
-            input_layout.setErrorEnabled(false);
-        }
-        return true;
-    }
-
-
-    /**
-     * Check not null of edit text header
-     *
-     * @param edittext     edit text your enter header
-     * @param input_layout input layout of inputlayout
-     * @return
-     */
-    private boolean checkHeader(EditText edittext, TextInputLayout input_layout) {
-        if (edittext.getText().toString().trim().isEmpty()) {
-            input_layout.setError(getString(R.string.input_layout_error_title));
-            requestFocus(edittext);
-            return false;
-        } else {
-            input_layout.setErrorEnabled(false);
+            textInputLayout.setErrorEnabled(false);
         }
         return true;
     }
