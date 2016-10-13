@@ -19,9 +19,19 @@
     <string name="notification_edit_note_success">Note edited success</string>
     <string name="notification_add_note_success">Note added success</string>
     <string name="notification_add_note_fail">Note added fail</string>
+    <string name="notification_add_work_success">Work add success</string>
+    <string name="notification_add_work_fail">Work add fail</string>
 
-    <string name="input_layout_error_header">Enter your title of note</string>
-    <string name="input_layout_error_title">Enter your header of note</string>
+    <string name="msg_error_input_header_note">Enter your header of note</string>
+    <string name="msg_error_input_title_note">Enter your title of note</string>
+
+    <string name="msg_error_input_header_work">Enter your header of work</string>
+    <string name="msg_error_input_title_work">Enter your header of work</string>
+    <string name="msg_error_input_date_work">Date !</string>
+    <string name="msg_error_input_time_end_work">Time End !</string>
+    <string name="msg_error_input_time_start_work">Time Start !</string>
+    <string name="msg_error_input_important_work">Important !</string>
+
 
     <string name="title_list_note_private">LIST NOTE</string>
     <string name="title_activity_edit_note_private">EditNotePrivateActivity</string>
