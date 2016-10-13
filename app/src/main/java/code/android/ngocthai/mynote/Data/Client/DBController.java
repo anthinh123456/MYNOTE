@@ -64,7 +64,6 @@ public class DBController {
             vl.put(Constraint.COLUMN_WORK_TIME_START, work.getTIMESTART());
             vl.put(Constraint.COLUMN_WORK_DATE, work.getDATE());
             vl.put(Constraint.COLUMN_WORK_IMPORTANT, work.getIMPORTANT());
-            vl.put(Constraint.COLUMN_WORK_STATUS, work.getSTATUS());
             long kq = db.insert(Constraint.TABLE_NAME_WORK, null, vl);
             if (kq > 0) {
                 //---insert success---
@@ -153,6 +152,27 @@ public class DBController {
             while (cursor.moveToNext()) {
                 note = new Note(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
                 ls.add(note);
+            }
+            cursor.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.close();
+        }
+        return ls;
+    }
+
+    public ArrayList<Work> getAllWork() {
+        ArrayList<Work> ls = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        try {
+            String sql = "SELECT * FROM " + Constraint.TABLE_NAME_WORK;
+            Cursor cursor = db.rawQuery(sql, null);
+            Work work;
+            while (cursor.moveToNext()) {
+                work = new Work(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
+                ls.add(work);
             }
             cursor.close();
         } catch (Exception e) {
