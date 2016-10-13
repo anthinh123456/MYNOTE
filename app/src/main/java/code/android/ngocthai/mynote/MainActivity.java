@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import code.android.ngocthai.mynote.Common.Adapter.MainAdapter;
 import code.android.ngocthai.mynote.Common.Utils.Constraint;
+import code.android.ngocthai.mynote.Data.Client.DBController;
 import code.android.ngocthai.mynote.Modules.Another.ThemeActivity;
 import code.android.ngocthai.mynote.Modules.Note.ListNotePrivateActivity;
 import code.android.ngocthai.mynote.Modules.Note.AddNoteActivity;
@@ -41,7 +42,7 @@ public class MainActivity extends BaseActivity
     private TabLayout mTabLayout;
     private FloatingActionButton mFab;
     private Toolbar mToolbar;
-    private int mTabSelected = 0;
+    private int mTabSelected = 1;
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
@@ -69,6 +70,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     protected void initData(Bundle saveInstanceState) {
+
         setSupportActionBar(mToolbar);
         mFab.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
@@ -78,6 +80,9 @@ public class MainActivity extends BaseActivity
         setupPager(mViewPager);
         mViewPager.setCurrentItem(1);
         mTabLayout.setupWithViewPager(mViewPager);
+
+        DBController db = new DBController(this);
+        Toast.makeText(MainActivity.this, "size" + db.getAllWork().size(), Toast.LENGTH_SHORT).show();
 
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
