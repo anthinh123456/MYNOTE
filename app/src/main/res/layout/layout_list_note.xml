@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/selector_background_item_note"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_header_note"
+        style="@style/HeaderNote"
+        android:text="Hoang Ngoc Thai"></TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#da1919" />
+
+    <TextView
+        android:id="@+id/txt_title_note"
+        style="@style/TitleNote"
+        android:text="17/03/1996" />
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">MY NOTE</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_note_private">AddNotePrivateActivity</string>
+    <string name="title_activity_list_note_private">ListNotePrivateActivity</string>
+
+    <string name="toolbar_add_note_private">Create a new note</string>
+
+    <string name="notification_edit_note_fail">Note edited fail</string>
+    <string name="notification_delete_note_fail">Note deleted fail</string>
+    <string name="notification_delete_note_success">Note deleted success</string>
+    <string name="notification_edit_note_success">Note edited success</string>
+    <string name="notification_add_note_success">Note added success</string>
+    <string name="notification_add_note_fail">Note added fail</string>
+
+    <string name="input_layout_error_header">Enter your title of note</string>
+    <string name="input_layout_error_title">Enter your header of note</string>
+
+    <string name="title_list_note_private">LIST NOTE</string>
+    <string name="title_activity_edit_note_private">EditNotePrivateActivity</string>
+    <string name="title_edit_note_private">EDIT NOTE</string>
+    <string name="title_activity_add_note_public">AddNotePublicActivity</string>
+    <string name="title_add_note">ADD NEW NOTE</string>
+    <string name="title_add_work">ADD NEW WORK</string>
+
+    <string name="tabs_note">LIST NOTE</string>
+    <string name="tabs_work">LIST WORK</string>
+    <string name="tabs_schedule">SCHEDULE</string>
+
+    <string name="title_activity_theme">ThemeActivity</string>
+    <string name="title_activity_add_work">AddWorkActivity</string>
+</resources>
