@@ -153,7 +153,7 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
      */
     private boolean checkTitle() {
         if (editTitle.getText().toString().trim().isEmpty()) {
-            inputTitle.setError(getString(R.string.input_layout_error_header));
+            inputTitle.setError(getString(R.string.msg_error_input_header_note));
             requestFocus(editTitle);
             return false;
         } else {
@@ -168,7 +168,7 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
      */
     private boolean checkHeader() {
         if (editHeader.getText().toString().trim().isEmpty()) {
-            inputHeader.setError(getString(R.string.input_layout_error_title));
+            inputHeader.setError(getString(R.string.msg_error_input_title_note));
             requestFocus(editHeader);
             return false;
         } else {
