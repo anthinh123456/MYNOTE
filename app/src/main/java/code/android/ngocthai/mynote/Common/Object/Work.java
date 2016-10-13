@@ -8,17 +8,27 @@ import java.io.Serializable;
 public class Work implements Serializable {
 
     private int ID;
-    private String HEADER, TITLE, IMPORTANT,TIMESTART, TIMEEND, STATUS, DATE;
+    private String HEADER, TITLE, TIMESTART, TIMEEND, DATE, IMPORTANT, STATUS;
 
-    public Work(int ID, String HEADER, String TITLE, String IMPORTANT, String TIMESTART, String TIMEEND, String STATUS, String DATE) {
+    public Work(int ID, String HEADER, String TITLE, String TIMESTART, String TIMEEND, String STATUS, String DATE) {
         this.ID = ID;
         this.HEADER = HEADER;
         this.TITLE = TITLE;
-        this.IMPORTANT = IMPORTANT;
         this.TIMESTART = TIMESTART;
         this.TIMEEND = TIMEEND;
         this.STATUS = STATUS;
         this.DATE = DATE;
+    }
+
+    public Work(int ID, String HEADER, String TITLE, String TIMESTART, String TIMEEND, String DATE, String IMPORTANT, String STATUS) {
+        this.ID = ID;
+        this.HEADER = HEADER;
+        this.TITLE = TITLE;
+        this.TIMESTART = TIMESTART;
+        this.TIMEEND = TIMEEND;
+        this.DATE = DATE;
+        this.IMPORTANT = IMPORTANT;
+        this.STATUS = STATUS;
     }
 
     public String getIMPORTANT() {
