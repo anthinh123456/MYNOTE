@@ -19,12 +19,13 @@ public class ListWorkAdapter extends RecyclerView.Adapter<ListWorkAdapter.ViewHo
     private ArrayList<Work> listWork;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textHeader, textTitle, textTimeEnd, textTimeStart, textDate, textStatus;
+        public TextView textHeader, textTitle, textTimeEnd, textTimeStart, textDate, textStatus, textImportant;
 
         public ViewHolder(View v) {
             super(v);
             textHeader = (TextView) v.findViewById(R.id.txtHeaderWork);
             textTitle = (TextView) v.findViewById(R.id.txtTitleWork);
+            textImportant = (TextView) v.findViewById(R.id.txtImportantWork);
             textDate = (TextView) v.findViewById(R.id.txtDateWork);
             textStatus = (TextView) v.findViewById(R.id.txtStatusWork);
             textTimeStart = (TextView) v.findViewById(R.id.txtTimeStart);
@@ -49,6 +50,10 @@ public class ListWorkAdapter extends RecyclerView.Adapter<ListWorkAdapter.ViewHo
         holder.textTimeEnd.setText(currentWork.getTIMEEND());
         holder.textHeader.setText(currentWork.getHEADER());
         holder.textDate.setText(currentWork.getDATE());
+        holder.textTitle.setText(currentWork.getTITLE());
+        holder.textStatus.setText(currentWork.getSTATUS());
+        holder.textImportant.setText(currentWork.getIMPORTANT());
+        holder.textTimeStart.setText(currentWork.getTIMESTART());
     }
 
     @Override
