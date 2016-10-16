@@ -214,8 +214,9 @@ public class MainActivity extends BaseActivity
                 } else if (getTabSelected() == 1) {
                     Intent intent = new Intent(this, AddWorkActivity.class);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "2", Toast.LENGTH_SHORT).show();
+                } else if (getTabSelected() == 2) {
+                    Intent intent = new Intent(this, AddWorkActivity.class);
+                    startActivity(intent);
                 }
                 break;
             }
