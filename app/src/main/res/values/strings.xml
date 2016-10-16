@@ -46,4 +46,5 @@
 
     <string name="title_activity_theme">ThemeActivity</string>
     <string name="title_activity_add_work">AddWorkActivity</string>
+    <string name="title_activity_edit_work">EditWorkActivity</string>
 </resources>
