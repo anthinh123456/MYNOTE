@@ -38,7 +38,7 @@ public class ListWorkAdapter extends RecyclerView.Adapter<ListWorkAdapter.ViewHo
 
     @Override
     public ListWorkAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_work, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_work, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
