@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/scrEditNote"
     android:fitsSystemWindows="true"
     tools:context=".Modules.Note.EditNoteActivity">
 
@@ -13,7 +14,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarEditNote"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -32,26 +33,26 @@
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_header_edit_note"
+                android:id="@+id/inputHeaderEditNote"
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edt_header_edit_note_private"
+                    android:id="@+id/edtHeaderEditNote"
                     style="@style/EditTextInput"
                     android:hint="Header Input" />
 
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_layout_title_edit_note"
+                android:id="@+id/inputTitleEditNote"
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/edt_title_edit_note_private"
+                    android:id="@+id/edtTitleEditNote"
                     style="@style/EditTextInput"
                     android:hint="Title Input" />
             </android.support.design.widget.TextInputLayout>
@@ -60,7 +61,7 @@
     </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_delete_note_private"
+        android:id="@+id/fabDeleteNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
@@ -69,7 +70,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_edit_note_private"
+        android:id="@+id/fabEditNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
