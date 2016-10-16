@@ -1,8 +1,12 @@
 package code.android.ngocthai.mynote.Modules.Note;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +18,8 @@ import android.view.GestureDetector;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,7 +34,7 @@ import code.android.ngocthai.mynote.R;
 
 public class ListNotePrivateActivity extends BaseActivity implements View.OnClickListener {
 
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
     private FloatingActionButton mFab;
     private RecyclerView recyclerView;
     private ArrayList<Note> listNote;
@@ -44,17 +50,17 @@ public class ListNotePrivateActivity extends BaseActivity implements View.OnClic
     protected void initVariables(Bundle saveInstanceState) {
         mFab = (FloatingActionButton) findViewById(R.id.fab_list_note_private);
         recyclerView = (RecyclerView) findViewById(R.id.rcv_list_note_private);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
     }
 
     @Override
     protected void initData(Bundle saveInstanceState) {
 
-        toolbar.setTitle(R.string.title_list_note_private);
-        setSupportActionBar(toolbar);
+        mToolbar.setTitle(R.string.title_list_note_private);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+        changeColor();
         mFab.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
         listNote = queryData();
@@ -81,6 +87,16 @@ public class ListNotePrivateActivity extends BaseActivity implements View.OnClic
 
             }
         }));
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void changeColor() {
+        mToolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getString(R.string.color_note))));
+        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.colorTabNote));
 
     }
 

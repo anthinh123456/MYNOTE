@@ -1,15 +1,18 @@
 package code.android.ngocthai.mynote.Modules.Note;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,7 +26,7 @@ import code.android.ngocthai.mynote.R;
 
 public class EditNoteActivity extends BaseActivity implements View.OnClickListener {
 
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
     private FloatingActionButton fabEdit, fabDelete;
     private EditText editHeader, editTitle;
     private TextInputLayout inputHeader, inputTitle;
@@ -37,7 +40,7 @@ public class EditNoteActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initVariables(Bundle saveInstanceState) {
-        toolbar = (Toolbar) findViewById(R.id.toolbarEditNote);
+        mToolbar = (Toolbar) findViewById(R.id.toolbarEditNote);
         fabEdit = (FloatingActionButton) findViewById(R.id.fabEditNote);
         fabDelete = (FloatingActionButton) findViewById(R.id.fabDeleteNote);
 
@@ -55,8 +58,8 @@ public class EditNoteActivity extends BaseActivity implements View.OnClickListen
         changeColor();
         editHeader.setText(note.getHEADER());
         editTitle.setText(note.getTITLE());
-        toolbar.setTitle(R.string.title_edit_note_private);
-        setSupportActionBar(toolbar);
+        mToolbar.setTitle(R.string.title_edit_note_private);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fabEdit.setOnClickListener(this);
@@ -64,10 +67,16 @@ public class EditNoteActivity extends BaseActivity implements View.OnClickListen
 
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void changeColor() {
-        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getString(R.string.color_note))));
-        fabDelete.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+        mToolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getString(R.string.color_note))));
         fabEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+        fabDelete.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.colorTabNote));
+
     }
 
     @Override
