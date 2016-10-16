@@ -32,7 +32,6 @@
     <string name="msg_error_input_time_start_work">Time Start !</string>
     <string name="msg_error_input_important_work">Important !</string>
 
-
     <string name="title_list_note_private">LIST NOTE</string>
     <string name="title_activity_edit_note_private">EditNotePrivateActivity</string>
     <string name="title_edit_note_private">EDIT NOTE</string>
