@@ -33,21 +33,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData(savedInstanceState);
     }
 
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(
-                activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-    public static void hideKeyroard(View view, final Activity activity) {
+    public static void hideKeyboard(View view, final Activity activity) {
 
         // Set up touch listener for non-text box views to hide keyboard.
         if (!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
                 public boolean onTouch(View v, MotionEvent event) {
-                    hideSoftKeyboard(activity);
+                    InputMethodManager inputMethodManager =
+                            (InputMethodManager) activity.getSystemService(
+                                    Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(
+                            activity.getCurrentFocus().getWindowToken(), 0);
                     return false;
                 }
             });
@@ -57,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (view instanceof ViewGroup) {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
                 View innerView = ((ViewGroup) view).getChildAt(i);
-                hideKeyroard(innerView, activity);
+                hideKeyboard(innerView, activity);
             }
         }
     }
