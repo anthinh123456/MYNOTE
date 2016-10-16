@@ -2,6 +2,8 @@ package code.android.ngocthai.mynote.Modules.Note;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -47,13 +49,12 @@ public class EditNoteActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initData(Bundle saveInstanceState) {
+
         BaseActivity.hideKeyboard(findViewById(R.id.scrEditNote), EditNoteActivity.this);
         getData();
-        fabDelete.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
-        fabEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+        changeColor();
         editHeader.setText(note.getHEADER());
         editTitle.setText(note.getTITLE());
-
         toolbar.setTitle(R.string.title_edit_note_private);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,6 +62,12 @@ public class EditNoteActivity extends BaseActivity implements View.OnClickListen
         fabEdit.setOnClickListener(this);
         fabDelete.setOnClickListener(this);
 
+    }
+
+    public void changeColor() {
+        toolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getString(R.string.color_note))));
+        fabDelete.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+        fabEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
     }
 
     @Override
@@ -187,6 +194,9 @@ public class EditNoteActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * Receive data from another activity sent
+     */
     private void getData() {
         note = (Note) getIntent().getSerializableExtra(Constraint.KEY_SEND_OBJECT_NOTE);
         statusSecret = getIntent().getStringExtra(Constraint.KEY_SEND_STATUS_SECRET_TO_EDIT);
