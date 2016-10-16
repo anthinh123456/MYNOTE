@@ -52,21 +52,26 @@ public class DBController {
         return insert;
     }
 
+    /**
+     * INSERT A NEW WORK TO DATABASE
+     *
+     * @param work
+     * @return
+     */
     public boolean InsertWork(Work work) {
         boolean insert = false;
-        //---open connection to write data---
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         try {
             ContentValues vl = new ContentValues();
             vl.put(Constraint.COLUMN_NOTE_HEADER, work.getHEADER());
             vl.put(Constraint.COLUMN_NOTE_TITLE, work.getTITLE());
             vl.put(Constraint.COLUMN_WORK_TIME_END, work.getTIMEEND());
+            vl.put(Constraint.COLUMN_WORK_STATUS, work.getSTATUS());
             vl.put(Constraint.COLUMN_WORK_TIME_START, work.getTIMESTART());
             vl.put(Constraint.COLUMN_WORK_DATE, work.getDATE());
             vl.put(Constraint.COLUMN_WORK_IMPORTANT, work.getIMPORTANT());
             long kq = db.insert(Constraint.TABLE_NAME_WORK, null, vl);
             if (kq > 0) {
-                //---insert success---
                 insert = true;
             } else {
                 insert = false;

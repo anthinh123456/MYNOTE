@@ -5,26 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import code.android.ngocthai.mynote.Common.Adapter.ListNoteAdapter;
 import code.android.ngocthai.mynote.Common.Adapter.ListWorkAdapter;
-import code.android.ngocthai.mynote.Common.Object.Note;
 import code.android.ngocthai.mynote.Common.Object.Work;
-import code.android.ngocthai.mynote.Common.Utils.Constraint;
-import code.android.ngocthai.mynote.Common.Utils.ItemOffsetDecoration;
 import code.android.ngocthai.mynote.Common.Utils.RecyclerTouchListener;
+import code.android.ngocthai.mynote.Common.Utils.SimpleDividerItemDecoration;
 import code.android.ngocthai.mynote.Common.Utils.Utils;
 import code.android.ngocthai.mynote.Data.Client.DBController;
-import code.android.ngocthai.mynote.Modules.Note.EditNoteActivity;
 import code.android.ngocthai.mynote.Modules.Ui.BaseFragment;
 import code.android.ngocthai.mynote.R;
 
@@ -52,11 +45,10 @@ public class ListWorkFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle saveInstanceState) {
-        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.item_deco);
         recyclerView.setHasFixedSize(true);
         listWork = queryData();
         adapter = new ListWorkAdapter(listWork);
-        recyclerView.addItemDecoration(itemOffsetDecoration);
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
