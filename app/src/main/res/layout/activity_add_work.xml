@@ -195,8 +195,7 @@
 
                         <EditText
                             android:id="@+id/edtStatus"
-                            style="@style/EditTimeInput"
-                            android:hint="STATUS" />
+                            style="@style/EditTimeInput" />
 
                     </android.support.design.widget.TextInputLayout>
 
