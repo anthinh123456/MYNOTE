@@ -5,7 +5,6 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,6 +45,7 @@ public class AddNoteActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initData(Bundle saveInstanceState) {
+        BaseActivity.hideKeyboard(findViewById(R.id.scrAddNote), AddNoteActivity.this);
         mToolbar.setTitle(R.string.title_add_note);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
