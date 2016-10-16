@@ -34,12 +34,12 @@ public class AddNoteActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initVariables(Bundle saveInstanceState) {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar_add_note_public);
-        mFab = (FloatingActionButton) findViewById(R.id.fab_add_done);
-        editHeader = (EditText) findViewById(R.id.edt_header_note_public);
-        editTitle = (EditText) findViewById(R.id.edt_title_note_public);
-        inputHeader = (TextInputLayout) findViewById(R.id.input_layout_header_note_public);
-        inputTitle = (TextInputLayout) findViewById(R.id.input_layout_title_note_public);
+        mToolbar = (Toolbar) findViewById(R.id.toolbarAddNote);
+        mFab = (FloatingActionButton) findViewById(R.id.fabAddNote);
+        editHeader = (EditText) findViewById(R.id.edtHeaderAddNote);
+        editTitle = (EditText) findViewById(R.id.edtTitleAddNote);
+        inputHeader = (TextInputLayout) findViewById(R.id.inputHeaderAddNote);
+        inputTitle = (TextInputLayout) findViewById(R.id.inputTitleAddNote);
     }
 
 
@@ -76,7 +76,7 @@ public class AddNoteActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fab_add_done: {
+            case R.id.fabAddNote: {
                 String header = editHeader.getText().toString();
                 String title = editTitle.getText().toString();
                 String statusSecret = getIntent().getStringExtra(Constraint.KEY_SEND_STATUS_SECRET_TO_ADD);
