@@ -37,7 +37,7 @@ public class ListNoteFragment extends BaseFragment {
 
     @Override
     protected void initVariables(Bundle saveInstanceState, View rootView) {
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.rcv_list_note_public);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rcvListNote);
 
     }
 
