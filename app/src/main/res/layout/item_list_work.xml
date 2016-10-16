@@ -22,7 +22,7 @@
             <TextView
                 android:id="@+id/txtTitleWork"
                 style="@style/TitleWork"
-                android:text="Fix connect to another device android" />
+                android:text="Fix connect to another device andrbvsdasbvjhasbvjhasvhbdsfjvhbdsjfhbvdsfjhbvdjshfbvkjdhfsbvrhjbid" />
 
             <LinearLayout
                 android:layout_width="match_parent"
