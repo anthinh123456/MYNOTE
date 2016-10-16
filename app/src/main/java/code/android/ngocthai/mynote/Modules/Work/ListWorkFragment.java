@@ -20,7 +20,9 @@ import code.android.ngocthai.mynote.Common.Adapter.ListWorkAdapter;
 import code.android.ngocthai.mynote.Common.Object.Note;
 import code.android.ngocthai.mynote.Common.Object.Work;
 import code.android.ngocthai.mynote.Common.Utils.Constraint;
+import code.android.ngocthai.mynote.Common.Utils.ItemOffsetDecoration;
 import code.android.ngocthai.mynote.Common.Utils.RecyclerTouchListener;
+import code.android.ngocthai.mynote.Common.Utils.Utils;
 import code.android.ngocthai.mynote.Data.Client.DBController;
 import code.android.ngocthai.mynote.Modules.Note.EditNoteActivity;
 import code.android.ngocthai.mynote.Modules.Ui.BaseFragment;
@@ -50,9 +52,11 @@ public class ListWorkFragment extends BaseFragment {
 
     @Override
     protected void initData(Bundle saveInstanceState) {
+        ItemOffsetDecoration itemOffsetDecoration = new ItemOffsetDecoration(getActivity(), R.dimen.item_deco);
         recyclerView.setHasFixedSize(true);
         listWork = queryData();
         adapter = new ListWorkAdapter(listWork);
+        recyclerView.addItemDecoration(itemOffsetDecoration);
         llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -75,9 +79,10 @@ public class ListWorkFragment extends BaseFragment {
     }
 
     public ArrayList<Work> queryData() {
+        String date = Utils.getCurrentDate();
         ArrayList<Work> ls = new ArrayList<>();
         DBController db = new DBController(getActivity());
-        ls = db.getAllWork();
+        ls = db.getAllWork("'" + date + "'");
         return ls;
     }
 
