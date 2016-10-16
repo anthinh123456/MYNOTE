@@ -33,8 +33,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData(savedInstanceState);
     }
 
-    public static void hideKeyboard(View view, final Activity activity) {
+    public BaseActivity() {
 
+    }
+
+    /**
+     * Hide keyboard when touch outside of edittext
+     *
+     * @param view
+     * @param activity
+     */
+    public static void hideKeyboard(View view, final Activity activity) {
         // Set up touch listener for non-text box views to hide keyboard.
         if (!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
@@ -48,7 +57,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
             });
         }
-
         //If a layout container, iterate over children and seed recursion.
         if (view instanceof ViewGroup) {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
