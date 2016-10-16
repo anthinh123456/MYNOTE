@@ -1,20 +1,23 @@
 package code.android.ngocthai.mynote.Modules.Work;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import code.android.ngocthai.mynote.Common.Object.Work;
-import code.android.ngocthai.mynote.Common.Utils.Constraint;
 import code.android.ngocthai.mynote.Data.Client.DBController;
 import code.android.ngocthai.mynote.MainActivity;
 import code.android.ngocthai.mynote.Modules.Ui.BaseActivity;
@@ -23,9 +26,9 @@ import code.android.ngocthai.mynote.R;
 public class AddWorkActivity extends BaseActivity implements View.OnClickListener {
 
     private Toolbar mToolbar;
-    private FloatingActionButton fab;
-    private EditText editHeader, editTitle, editTimeEnd, editTimeStart, editDate, editImportant;
-    private TextInputLayout inputHeader, inputTitle, inputTimeStart, inputTimeEnd, inputDate, inputImportant;
+    private FloatingActionButton mFab;
+    private EditText editHeader, editTitle, editTimeEnd, editTimeStart, editDate, editImportant, editStatus;
+    private TextInputLayout inputHeader, inputTitle, inputTimeStart, inputTimeEnd, inputDate, inputImportant, inputStatus;
 
     @Override
     protected int getLayoutResource() {
@@ -35,7 +38,7 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initVariables(Bundle saveInstanceState) {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        fab = (FloatingActionButton) findViewById(R.id.fabAddWorkDone);
+        mFab = (FloatingActionButton) findViewById(R.id.fabAddWorkDone);
 
         editDate = (EditText) findViewById(R.id.edtDate);
         editImportant = (EditText) findViewById(R.id.edtImportant);
@@ -43,6 +46,7 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
         editTimeStart = (EditText) findViewById(R.id.edtTimeStart);
         editHeader = (EditText) findViewById(R.id.edtHeaderWork);
         editTitle = (EditText) findViewById(R.id.edtTitleWork);
+        editStatus = (EditText) findViewById(R.id.edtStatus);
 
         inputDate = (TextInputLayout) findViewById(R.id.inputDate);
         inputHeader = (TextInputLayout) findViewById(R.id.inputHeaderWork);
@@ -50,6 +54,7 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
         inputImportant = (TextInputLayout) findViewById(R.id.inputImportant);
         inputTimeEnd = (TextInputLayout) findViewById(R.id.inputTimeEnd);
         inputTimeStart = (TextInputLayout) findViewById(R.id.inputTimeStart);
+        inputStatus = (TextInputLayout) findViewById(R.id.inputStatus);
 
 
     }
@@ -57,10 +62,24 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initData(Bundle saveInstanceState) {
 
+        BaseActivity.hideKeyboard(findViewById(R.id.scrAddWork), this);
         mToolbar.setTitle(R.string.title_add_work);
+        editStatus.setText("FALSE");
         setSupportActionBar(mToolbar);
+        changeColor();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        fab.setOnClickListener(this);
+        mFab.setOnClickListener(this);
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void changeColor() {
+        mToolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getString(R.string.color_work))));
+        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabWork)));
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.colorTabWork));
 
     }
 
@@ -91,6 +110,7 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
         if (!checkValues(editHeader, inputHeader, getString(R.string.msg_error_input_header_work))
                 | !checkValues(editTitle, inputTitle, getString(R.string.msg_error_input_title_work))
                 | !checkValues(editDate, inputDate, getString(R.string.msg_error_input_date_work))
+                | !checkValues(editStatus, inputStatus, getString(R.string.msg_error_input_status_work))
                 | !checkValues(editTimeEnd, inputTimeEnd, getString(R.string.msg_error_input_time_end_work))
                 | !checkValues(editTimeStart, inputTimeStart, getString(R.string.msg_error_input_time_start_work))
                 | !checkValues(editImportant, inputImportant, getString(R.string.msg_error_input_important_work))) {
@@ -103,7 +123,7 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
             String important = editImportant.getText().toString();
             String timeEnd = editTimeEnd.getText().toString();
             String timeStart = editTimeStart.getText().toString();
-            boolean insert = db.InsertWork(new Work(0, header, title, important, timeStart, timeEnd, date));
+            boolean insert = db.InsertWork(new Work(0, header, title, timeStart, timeEnd, date, important, "FALSE"));
             if (insert) {
                 Toast.makeText(AddWorkActivity.this, R.string.notification_add_work_success, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
