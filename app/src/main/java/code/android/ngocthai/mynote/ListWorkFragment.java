@@ -47,6 +47,7 @@ public class ListWorkFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
         listWork = queryData();
         adapter = new ListWorkAdapter(listWork);
+        recyclerView.setNestedScrollingEnabled(false);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm);
