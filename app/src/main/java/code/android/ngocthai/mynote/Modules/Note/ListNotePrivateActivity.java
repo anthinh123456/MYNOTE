@@ -51,6 +51,9 @@ public class ListNotePrivateActivity extends BaseActivity implements View.OnClic
     @Override
     protected void initData(Bundle saveInstanceState) {
 
+        toolbar.setTitle(R.string.title_list_note_private);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
         mFab.setOnClickListener(this);
         recyclerView.setHasFixedSize(true);
@@ -101,12 +104,6 @@ public class ListNotePrivateActivity extends BaseActivity implements View.OnClic
                 }
             }
         }
-    }
-
-    private void initToolbar() {
-        toolbar.setTitle(R.string.title_list_note_private);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
