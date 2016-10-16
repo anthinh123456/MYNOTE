@@ -9,9 +9,9 @@
     <color name="colorTextHeaderNote">#4CAF50</color>
     <color name="colorBackgroundFab">#FF5722</color>
 
-    <color name="colorTabNote">#4CAF50</color>
-    <color name="colorTabWork">#FF5722</color>
-    <color name="colorTabSchedule">#9C27B0</color>
+    <color name="colorTabNote">#F44336</color>
+    <color name="colorTabWork">#4CAF50</color>
+    <color name="colorTabSchedule">#00BCD4</color>
 
     <color name="colorTextStatusWork">#0aeaa3</color>
 </resources>

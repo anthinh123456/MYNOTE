@@ -47,4 +47,8 @@
     <string name="title_activity_theme">ThemeActivity</string>
     <string name="title_activity_add_work">AddWorkActivity</string>
     <string name="title_activity_edit_work">EditWorkActivity</string>
+
+    <string name="color_work">#4CAF50</string>
+    <string name="color_note">#F44336</string>
+    <string name="color_schedule">#00BCD4</string>
 </resources>
