@@ -24,11 +24,20 @@
                 style="@style/TitleWork"
                 android:text="Fix connect to another device andrbvsdasbvjhasbvjhasvhbdsfjvhbdsjfhbvdsfjhbvdjshfbvkjdhfsbvrhjbid" />
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="DATE TIME " />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:paddingTop="5dp">
 
                 <TextView
@@ -44,7 +53,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="10dp"
                     android:text="END 09:06" />
 
                 <TextView
@@ -52,7 +60,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingLeft="10dp"
                     android:text="END 09:06" />
 
             </LinearLayout>
@@ -60,7 +67,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -72,7 +81,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingLeft="10dp"
                         android:text="STATUS " />
 
                     <TextView
