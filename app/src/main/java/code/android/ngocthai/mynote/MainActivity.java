@@ -15,7 +15,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +25,6 @@ import android.widget.Toast;
 
 import code.android.ngocthai.mynote.Common.Adapter.MainAdapter;
 import code.android.ngocthai.mynote.Common.Utils.Constraint;
-import code.android.ngocthai.mynote.Data.Client.DBController;
 import code.android.ngocthai.mynote.Modules.Another.ThemeActivity;
 import code.android.ngocthai.mynote.Modules.Note.ListNotePrivateActivity;
 import code.android.ngocthai.mynote.Modules.Note.AddNoteActivity;
@@ -47,8 +45,8 @@ public class MainActivity extends BaseActivity
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private LinearLayout linearLayout;
-    private String[] strColor = {"#4CAF50", "#FF5722", "#9C27B0"};
-    private int[] inColor = {R.color.colorTabNote, R.color.colorTabWork, R.color.colorTabSchedule};
+    private String[] strColor = {"#F44336", "#4CAF50", "#00BCD4"};
+    private int[] intColor = {R.color.colorTabNote, R.color.colorTabWork, R.color.colorTabSchedule};
 
 
     @Override
@@ -75,15 +73,11 @@ public class MainActivity extends BaseActivity
         mFab.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
-        changeColorWindow(inColor[1], strColor[1]);
+        changeColorWindow(intColor[1], strColor[1]);
 
         setupPager(mViewPager);
         mViewPager.setCurrentItem(1);
         mTabLayout.setupWithViewPager(mViewPager);
-
-        DBController db = new DBController(this);
-        Toast.makeText(MainActivity.this, "size" + db.getAllWork().size(), Toast.LENGTH_SHORT).show();
-
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -93,7 +87,7 @@ public class MainActivity extends BaseActivity
             @Override
             public void onPageSelected(int position) {
                 setTabSelected(position);
-                changeColorWindow(inColor[position], strColor[position]);
+                changeColorWindow(intColor[position], strColor[position]);
             }
 
             @Override
