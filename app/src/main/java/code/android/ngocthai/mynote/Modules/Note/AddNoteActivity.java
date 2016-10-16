@@ -2,6 +2,8 @@ package code.android.ngocthai.mynote.Modules.Note;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -49,12 +51,18 @@ public class AddNoteActivity extends BaseActivity implements View.OnClickListene
         mToolbar.setTitle(R.string.title_add_note);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        changeColor();
         mFab.setOnClickListener(this);
-        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
         statusSecret = getIntent().getStringExtra(Constraint.KEY_SEND_STATUS_SECRET_TO_ADD);
 
     }
+
+
+    public void changeColor() {
+        mToolbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(getString(R.string.color_note))));
+        mFab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
