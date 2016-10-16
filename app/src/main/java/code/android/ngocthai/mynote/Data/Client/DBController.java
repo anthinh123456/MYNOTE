@@ -173,12 +173,38 @@ public class DBController {
      * @param today
      * @return
      */
-    public ArrayList<Work> getAllWork(String today) {
+    public ArrayList<Work> getWorkToday(String today) {
         ArrayList<Work> ls = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         try {
             String sql = "SELECT * FROM " + Constraint.TABLE_NAME_WORK + " WHERE " + Constraint.COLUMN_WORK_DATE + " = " + today;
+            Cursor cursor = db.rawQuery(sql, null);
+            Work work;
+            while (cursor.moveToNext()) {
+                work = new Work(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
+                ls.add(work);
+            }
+            cursor.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.close();
+        }
+        return ls;
+    }
+
+    /**
+     * Get all work on schedule
+     *
+     * @return
+     */
+    public ArrayList<Work> getAllWork() {
+        ArrayList<Work> ls = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        try {
+            String sql = "SELECT * FROM " + Constraint.TABLE_NAME_WORK;
             Cursor cursor = db.rawQuery(sql, null);
             Work work;
             while (cursor.moveToNext()) {

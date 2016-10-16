@@ -1,4 +1,4 @@
-package code.android.ngocthai.mynote.Modules.Work;
+package code.android.ngocthai.mynote;
 
 
 import android.content.Intent;
@@ -19,7 +19,7 @@ import code.android.ngocthai.mynote.Common.Utils.SimpleDividerItemDecoration;
 import code.android.ngocthai.mynote.Common.Utils.Utils;
 import code.android.ngocthai.mynote.Data.Client.DBController;
 import code.android.ngocthai.mynote.Modules.Ui.BaseFragment;
-import code.android.ngocthai.mynote.R;
+import code.android.ngocthai.mynote.Modules.Work.EditWorkActivity;
 
 
 /**
@@ -31,7 +31,6 @@ public class ListWorkFragment extends BaseFragment {
     private ArrayList<Work> listWork;
     private ListWorkAdapter adapter;
     private LinearLayoutManager llm;
-
 
     @Override
     protected int getLayoutResource() {
@@ -74,9 +73,8 @@ public class ListWorkFragment extends BaseFragment {
         String date = Utils.getCurrentDate();
         ArrayList<Work> ls = new ArrayList<>();
         DBController db = new DBController(getActivity());
-        ls = db.getAllWork("'" + date + "'");
+        ls = db.getAllWork();
         return ls;
     }
-
 
 }

@@ -31,7 +31,7 @@ import code.android.ngocthai.mynote.Modules.Note.AddNoteActivity;
 import code.android.ngocthai.mynote.Modules.Note.ListNoteFragment;
 import code.android.ngocthai.mynote.Modules.Ui.BaseActivity;
 import code.android.ngocthai.mynote.Modules.Work.AddWorkActivity;
-import code.android.ngocthai.mynote.Modules.Work.ListWorkFragment;
+import code.android.ngocthai.mynote.Modules.Work.WorkTodayFragment;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -125,8 +125,8 @@ public class MainActivity extends BaseActivity
     private void setupPager(ViewPager vp) {
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager());
         adapter.addFragment(new ListNoteFragment(), getString(R.string.tabs_note));
-        adapter.addFragment(new ListWorkFragment(), getString(R.string.tabs_work));
-        adapter.addFragment(new ListScheduleFragment(), getString(R.string.tabs_schedule));
+        adapter.addFragment(new WorkTodayFragment(), getString(R.string.today));
+        adapter.addFragment(new ListWorkFragment(), getString(R.string.tab_list_work));
         vp.setAdapter(adapter);
     }
 

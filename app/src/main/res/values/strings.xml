@@ -42,8 +42,8 @@
     <string name="title_add_work">ADD NEW WORK</string>
 
     <string name="tabs_note">LIST NOTE</string>
-    <string name="tabs_work">LIST WORK</string>
-    <string name="tabs_schedule">SCHEDULE</string>
+    <string name="today">TODAY</string>
+    <string name="tab_list_work">LIST WORK</string>
 
     <string name="title_activity_theme">ThemeActivity</string>
     <string name="title_activity_add_work">AddWorkActivity</string>
