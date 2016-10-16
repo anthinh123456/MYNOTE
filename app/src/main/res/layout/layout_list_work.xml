@@ -53,12 +53,36 @@
                     android:paddingLeft="10dp"
                     android:text="END 09:06" />
 
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:text="END 09:06" />
+
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtStatusWork"
-                style="@style/StatusWork"
-                android:text="DONE" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="STATUS " />
+
+                <TextView
+                    android:id="@+id/txtStatusWork"
+                    style="@style/StatusWork"
+                    android:text="DONE" />
+
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
