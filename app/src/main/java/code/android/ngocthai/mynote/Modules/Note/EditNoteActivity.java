@@ -5,7 +5,6 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,9 +16,10 @@ import code.android.ngocthai.mynote.Common.Object.Note;
 import code.android.ngocthai.mynote.Common.Utils.Constraint;
 import code.android.ngocthai.mynote.Data.Client.DBController;
 import code.android.ngocthai.mynote.MainActivity;
+import code.android.ngocthai.mynote.Modules.Ui.BaseActivity;
 import code.android.ngocthai.mynote.R;
 
-public class EditNoteActivity extends AppCompatActivity implements View.OnClickListener {
+public class EditNoteActivity extends BaseActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
     private FloatingActionButton fabEdit, fabDelete;
@@ -29,26 +29,25 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
     private String statusSecret;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_note);
-
-        initView();
-
+    protected int getLayoutResource() {
+        return R.layout.activity_edit_note;
     }
 
-    private void initView() {
+    @Override
+    protected void initVariables(Bundle saveInstanceState) {
+        toolbar = (Toolbar) findViewById(R.id.toolbarEditNote);
+        fabEdit = (FloatingActionButton) findViewById(R.id.fabEditNote);
+        fabDelete = (FloatingActionButton) findViewById(R.id.fabDeleteNote);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        editHeader = (EditText) findViewById(R.id.edtHeaderEditNote);
+        editTitle = (EditText) findViewById(R.id.edtTitleEditNote);
+        inputHeader = (TextInputLayout) findViewById(R.id.inputHeaderEditNote);
+        inputTitle = (TextInputLayout) findViewById(R.id.inputTitleEditNote);
+    }
 
-        fabEdit = (FloatingActionButton) findViewById(R.id.fab_edit_note_private);
-        fabDelete = (FloatingActionButton) findViewById(R.id.fab_delete_note_private);
-
-        editHeader = (EditText) findViewById(R.id.edt_header_edit_note_private);
-        editTitle = (EditText) findViewById(R.id.edt_title_edit_note_private);
-        inputHeader = (TextInputLayout) findViewById(R.id.input_layout_header_edit_note);
-        inputTitle = (TextInputLayout) findViewById(R.id.input_layout_title_edit_note);
-
+    @Override
+    protected void initData(Bundle saveInstanceState) {
+        BaseActivity.hideKeyboard(findViewById(R.id.scrEditNote), EditNoteActivity.this);
         getData();
         fabDelete.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
         fabEdit.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorTabNote)));
@@ -87,13 +86,13 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fab_edit_note_private: {
+            case R.id.fabEditNote: {
                 String header = editHeader.getText().toString();
                 String title = editTitle.getText().toString();
                 submitEditNote(header, title);
                 break;
             }
-            case R.id.fab_delete_note_private: {
+            case R.id.fabDeleteNote: {
                 submitDeleteNote();
                 break;
             }
