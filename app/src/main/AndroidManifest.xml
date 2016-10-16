@@ -38,6 +38,10 @@
         <activity
             android:name=".Modules.Work.AddWorkActivity"
             android:label="@string/title_activity_add_work"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Modules.Work.EditWorkActivity"
+            android:label="@string/title_activity_edit_work"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
