@@ -38,10 +38,10 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 
-import com.wdullaer.materialdatetimepicker.R;
-
 import java.util.Calendar;
 import java.util.Locale;
+
+import code.android.ngocthai.timepicker.R;
 
 /**
  * The primary layout to hold the circular picker, and the am/pm buttons. This view will measure

@@ -42,16 +42,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wdullaer.materialdatetimepicker.HapticFeedbackController;
-import com.wdullaer.materialdatetimepicker.R;
-import com.wdullaer.materialdatetimepicker.TypefaceHelper;
-import com.wdullaer.materialdatetimepicker.Utils;
-
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Locale;
+
+import code.android.ngocthai.timepicker.HapticFeedbackController;
+import code.android.ngocthai.timepicker.R;
+import code.android.ngocthai.timepicker.TypefaceHelper;
+import code.android.ngocthai.timepicker.Utils;
 
 /**
  * Dialog allowing users to select a date.
@@ -336,7 +336,7 @@ public class DatePickerDialog extends DialogFragment implements
                 dismiss();
             }
         });
-        okButton.setTypeface(TypefaceHelper.get(activity,"Roboto-Medium"));
+        okButton.setTypeface(TypefaceHelper.get(activity, "Roboto-Medium"));
         if(mOkString != null) okButton.setText(mOkString);
         else okButton.setText(mOkResid);
 

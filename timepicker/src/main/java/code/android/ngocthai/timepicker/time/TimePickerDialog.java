@@ -44,23 +44,22 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wdullaer.materialdatetimepicker.HapticFeedbackController;
-import com.wdullaer.materialdatetimepicker.R;
-import com.wdullaer.materialdatetimepicker.TypefaceHelper;
-import com.wdullaer.materialdatetimepicker.Utils;
-import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout.OnValueSelectedListener;
-
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import code.android.ngocthai.timepicker.HapticFeedbackController;
+import code.android.ngocthai.timepicker.R;
+import code.android.ngocthai.timepicker.TypefaceHelper;
+import code.android.ngocthai.timepicker.Utils;
+
 /**
  * Dialog to set a time.
  */
 public class TimePickerDialog extends DialogFragment implements
-        OnValueSelectedListener, TimePickerController {
+        RadialPickerLayout.OnValueSelectedListener, TimePickerController {
     private static final String TAG = "TimePickerDialog";
 
     private static final String KEY_INITIAL_TIME = "initial_time";

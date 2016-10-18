@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 
-import com.wdullaer.materialdatetimepicker.date.MonthView.OnDayClickListener;
+import code.android.ngocthai.timepicker.date.MonthView.OnDayClickListener;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -211,13 +211,6 @@ public abstract class MonthAdapter extends BaseAdapter implements OnDayClickList
         return mSelectedDay.year == year && mSelectedDay.month == month;
     }
 
-
-    @Override
-    public void onDayClick(MonthView view, CalendarDay day) {
-        if (day != null) {
-            onDayTapped(day);
-        }
-    }
 
     /**
      * Maintains the same hour/min/sec but moves the day to the tapped day.

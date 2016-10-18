@@ -1,6 +1,7 @@
 package code.android.ngocthai.mynote.Modules.Work;
 
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -10,12 +11,21 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
+import java.util.Calendar;
 
 import code.android.ngocthai.mynote.Common.Object.Work;
 import code.android.ngocthai.mynote.Data.Client.DBController;
@@ -23,12 +33,16 @@ import code.android.ngocthai.mynote.MainActivity;
 import code.android.ngocthai.mynote.Modules.Ui.BaseActivity;
 import code.android.ngocthai.mynote.R;
 
-public class AddWorkActivity extends BaseActivity implements View.OnClickListener {
+public class AddWorkActivity extends BaseActivity implements View.OnClickListener,
+        TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private Toolbar mToolbar;
     private FloatingActionButton mFab;
+    private TextView txtResult;
+    private Button btnChooseTime;
     private EditText editHeader, editTitle, editTimeEnd, editTimeStart, editDate, editImportant, editStatus;
     private TextInputLayout inputHeader, inputTitle, inputTimeStart, inputTimeEnd, inputDate, inputImportant, inputStatus;
+
 
     @Override
     protected int getLayoutResource() {
@@ -42,18 +56,17 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
 
         editDate = (EditText) findViewById(R.id.edtDate);
         editImportant = (EditText) findViewById(R.id.edtImportant);
-        editTimeEnd = (EditText) findViewById(R.id.edtTimeEnd);
-        editTimeStart = (EditText) findViewById(R.id.edtTimeStart);
         editHeader = (EditText) findViewById(R.id.edtHeaderWork);
         editTitle = (EditText) findViewById(R.id.edtTitleWork);
         editStatus = (EditText) findViewById(R.id.edtStatus);
+
+        btnChooseTime = (Button) findViewById(R.id.btnChooseTimeStart);
+        txtResult = (TextView) findViewById(R.id.txtResultTime);
 
         inputDate = (TextInputLayout) findViewById(R.id.inputDate);
         inputHeader = (TextInputLayout) findViewById(R.id.inputHeaderWork);
         inputTitle = (TextInputLayout) findViewById(R.id.inputTitleWork);
         inputImportant = (TextInputLayout) findViewById(R.id.inputImportant);
-        inputTimeEnd = (TextInputLayout) findViewById(R.id.inputTimeEnd);
-        inputTimeStart = (TextInputLayout) findViewById(R.id.inputTimeStart);
         inputStatus = (TextInputLayout) findViewById(R.id.inputStatus);
 
 
@@ -69,6 +82,34 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
         changeColor();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mFab.setOnClickListener(this);
+
+        btnChooseTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                TimePickerDialog tpd = TimePickerDialog.newInstance(
+                        AddWorkActivity.this,
+                        now.get(Calendar.HOUR_OF_DAY),
+                        now.get(Calendar.MINUTE),
+                        true
+                );
+                tpd.enableMinutes(true);
+                tpd.vibrate(true);
+                tpd.enableMinutes(true);
+                // color
+                tpd.setAccentColor(Color.parseColor("#4CAF50"));
+                // title
+//                tpd.setTitle("TimePicker Title");
+
+                tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        Log.d("TimePicker", "Dialog was cancelled");
+                    }
+                });
+                tpd.show(getFragmentManager(), "Timepickerdialog");
+            }
+        });
 
     }
 
@@ -152,4 +193,17 @@ public class AddWorkActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+
+    }
+
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+        String hourString = hourOfDay < 10 ? "0" + hourOfDay : "" + hourOfDay;
+        String minuteString = minute < 10 ? "0" + minute : "" + minute;
+        String secondString = second < 10 ? "0" + second : "" + second;
+        String time = hourString + "h:" + minuteString + "m:" + secondString + "s";
+        txtResult.setText(time);
+    }
 }

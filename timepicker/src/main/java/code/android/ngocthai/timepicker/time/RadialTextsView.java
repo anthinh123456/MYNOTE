@@ -31,7 +31,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 
-import com.wdullaer.materialdatetimepicker.R;
+import code.android.ngocthai.timepicker.R;
 
 /**
  * A view to show a series of numbers in a circular pattern.
